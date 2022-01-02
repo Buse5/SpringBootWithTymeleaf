@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{site.title}"></title>
+<link href="/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2">
+				<div th:replace="temp/menu.html :: menu"></div>
+			</div>
+			<div class="col-10">
+				<div class="card shadow">
+					<div class="card-body">
+						<form action="ogretmen_ekle" method="post" th:object="${ogretmen}">
+							<div>
+								<input class="form-control" type="text" id="ogretmenId" th:field="*{ogrName}" required="required" autocomplete="off">
+							</div>
+							<div>
+								<input type="submit" th:value="#{ogretmen.ekle}" class="btn btn-primary mt-3">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</html>

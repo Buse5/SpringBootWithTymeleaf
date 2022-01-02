@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{site.title}"></title>
+<link href="/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2">
+				<div th:replace="temp/menu.html :: menu"></div>
+			</div>
+			<div class="col-10">
+				<div class="card shadow">
+					<div class="card-body">
+						<form action="ders_guncelle" method="post" th:object="${ders}">
+							<input type="number" th:field="*{id}">
+							<div>
+								<select class="form-control" th:field="*{ogretmen}">
+									<option th:each="ogretmen : ${ogretmen_list}" th:value="${ogretmen.id}" th:text="${ogretmen.ogrName}"></option>
+								</select>
+							</div>
+							<div>
+								<select class="form-control" th:field="*{konu}">
+									<option th:each="kokonu : ${konu_list}" th:value="${kokonu.id}" th:text="${kokonu.konu}"></option>
+								</select>
+							</div>
+							<div>
+								<input type="submit" th:value="#{ders.ekle}" class="btn btn-primary mt-3">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</html>

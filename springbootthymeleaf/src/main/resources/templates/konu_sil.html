@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{site.title}"></title>
+<link href="/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2">
+				<div th:replace="temp/menu.html :: menu"></div>
+			</div>
+			<div class="col-10">
+				<table class="table table-striped table-bordered">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col" class="col-auto" th:text="#{konu.id}"></th>
+							<th scope="col" class="col-auto" th:text="#{konu.isim}"></th>
+							<th scope="col" class="col-auto" th:text="#{konu.sil}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="konu : ${konu_list}">
+							<td class="col-auto"><label th:text="${konu.id}"></label></td>
+							<td class="col-auto"><label th:text="${konu.konu}"></label></td>
+							<td class="col-auto">
+								<form th:action="'konu_sil?id=' + ${konu.id}" method="post">
+									<input type="submit" th:value="#{konu.sil}" class="btn btn-danger">
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</html>

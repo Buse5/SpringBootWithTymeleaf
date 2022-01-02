@@ -1,0 +1,24 @@
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:fragment="menu" th:with="url=${#httpServletRequest.requestURI}">
+<a href="?lang=en" th:if = "${#locale.language == 'tr'}" class="page-link" th:text="#{site.english}"></a>
+<a href="?lang=tr" th:if = "${#locale.language == 'en'}" class="page-link" th:text="#{site.turkish}"></a>
+<a href="/" class="page-link" th:text="#{menu.index}"></a>
+<a href="/ogretmen" th:class="${url} == '/ogretmen' ? 'page-link bg-info' : 'page-link'" th:text="#{menu.teacher}"></a>
+<a href="/ogretmen/ekle" class="page-link ms-4" th:text="#{menu.save}"></a>
+<a href="/ogretmen/sil" sec:authorize="isAuthenticated()" class="page-link ms-4" th:text="#{menu.delete}"></a>
+<a href="/ogrenci" class="page-link" th:text="#{menu.student}"></a>
+<!-- <a href="/ogrenci/ekle" class="page-link ms-4">Kaydet</a> -->
+<!-- <a href="/ogrenci/sil" sec:authorize="isAuthenticated()" class="page-link ms-4">Sil</a> -->
+<!-- <a href="/ogrenci/guncelle" class="page-link ms-4">Güncelle</a> -->
+<a href="/konu" class="page-link" th:text="#{menu.subject}"></a>
+<a href="/konu/ekle" class="page-link ms-4" th:text="#{menu.save}"></a>
+<a href="/konu/sil" sec:authorize="isAuthenticated()" class="page-link ms-4" th:text="#{menu.delete}"></a>
+<a href="/ders" class="page-link" th:text="#{menu.lesson}"></a>
+<a href="/ders/ekle" class="page-link ms-4" th:text="#{menu.save}"></a>
+<a href="/ders/sil" sec:authorize="isAuthenticated()" class="page-link ms-4" th:text="#{menu.delete}"></a>
+<a href="/derskayit" class="page-link" th:text="#{menu.registeration}"></a>
+<!-- <a href="/derskayit/ekle" class="page-link ms-4">Kaydet</a> -->
+<!-- <a href="/derskayit/sil" class="page-link ms-4">Sil</a> -->
+<!-- <a href="/derskayit/guncelle" class="page-link ms-4">Güncelle</a> -->
+<a href="/login" sec:authorize="!isAuthenticated()" class="page-link" th:text="#{site.login}"></a>
+<a href="/logout" sec:authorize="isAuthenticated()" class="page-link" th:text="#{site.logout}"></a>
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{site.title}"></title>
+<link href="/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2">
+				<div th:replace="temp/menu.html :: menu"></div>
+			</div>
+			<div class="col-10">
+				<div class="card shadow">
+					<div class="card-body">
+						<!-- <label class="form-label" th:text="${ogretmen.id}"></label> -->
+						<!-- name isimli bir request parameter gelirse ekranda görünecek -->
+						<!-- <label class="form-label" th:if="${param.name}" th:text="${param.name}"></label> -->
+						<label class="form-label" th:text="${param.id}"></label>
+						<hr>
+						<label class="form-label" th:text="${ogretmen.ogrName}"></label>
+						<hr>
+						<!-- Öğretmen sınıfındaki derslerin içindeki konuların içindeki konular yani konu isimleri virgül ile birleşti -->
+						<label class="form-label" th:text="${#strings.arrayJoin(ogretmen.ogretmenDersler.![konu.konu], ', ')}"></label>
+						<hr>
+						<!-- Geldiğim sayfaya dönmek için -->
+						<!-- <button class="btn btn-danger" onclick="window.history.back();" th:text="#{site.goback}"></button> -->
+						<a class="btn btn-danger" th:text="#{site.goback}" href="/ogretmen"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</html>

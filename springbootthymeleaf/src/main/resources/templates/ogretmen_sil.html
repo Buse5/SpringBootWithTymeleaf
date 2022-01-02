@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{site.title}"></title>
+<link href="/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2">
+				<div th:replace="temp/menu.html :: menu"></div>
+			</div>
+			<div class="col-10">
+				<table class="table table-striped table-bordered">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col" class="col-auto" th:text="#{ogretmen.id}"></th>
+							<th scope="col" class="col-auto" th:text="#{ogretmen.isim}"></th>
+							<th scope="col" class="col-auto" th:text="#{ogretmen.sil}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ogretmen : ${ogretmen_list}">
+							<td class="col-auto"><label th:text="${ogretmen.id}"></label></td>
+							<td class="col-auto"><label th:text="${ogretmen.ogrName}"></label></td>
+							<td class="col-auto">
+<!-- 								<form th:action="'ogretmen_sil?id=' + ${ogretmen.id}" method="post"> -->
+<!-- 									<input type="submit" th:value="#{ogretmen.sil}" class="btn btn-danger"> -->
+<!-- 								</form> -->
+								<form action="ogretmen_sil" method="post">
+									<input id="ogrId" name="ogrId" type="hidden" th:value="${ogretmen.id}">
+									<input type="submit" th:value="#{ogretmen.sil}" class="btn btn-danger">
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/js/bootstrap.bundle.js"></script>
+</html>

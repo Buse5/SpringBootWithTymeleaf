@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{site.title}"></title>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-2">
+				<div th:replace="temp/menu.html :: menu"></div>
+			</div>
+			<div class="col-10">
+				<table class="table table-striped table-bordered">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col" class="col-auto" th:text="#{ders.id}"></th>
+							<th scope="col" class="col-auto" th:text="#{ders.ogretmen.isim}"></th>
+							<th scope="col" class="col-auto" th:text="#{ders.konu.isim}"></th>
+							<th scope="col" class="col-auto" th:text="#{ders.guncelle}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="ders : ${ders_list}">
+							<td class="col-auto"><label th:text="${ders.id}"></label></td>
+							<td class="col-auto"><label th:text="${ders.ogretmen.ogrName}"></label></td>
+							<td class="col-auto"><label th:text="${ders.konu.konu}"></label></td>
+							<td class="col-auto">
+								<a th:text="#{ders.guncelle}" class="btn btn-outline-success" th:href="'/ders/guncelle?id=' + ${ders.id}"></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</html>
